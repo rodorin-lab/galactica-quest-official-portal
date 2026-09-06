@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+data/*.db
+data/live-state.json
+config.js
+.env
+data/*.db*

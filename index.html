@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#03050b" />
+  <meta name="description" content="GALACTICA QUEST official portal — enter a living AI world inside GENESIS COLONY 534." />
+  <title>GALACTICA QUEST // OFFICIAL PORTAL</title>
+  <link rel="icon" href="assets/galactica-sigil.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="galacticaBg" aria-hidden="true"></canvas>
+  <div class="world-mirror" id="worldMirror" aria-hidden="true"></div>
+  <div class="scanlines" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-halo" id="cursorHalo" aria-hidden="true"></div>
+
+  <header class="topbar glass">
+    <a class="brand" href="#home" aria-label="GALACTICA QUEST home">
+      <span class="brand-mark">GQ</span>
+      <span>
+        <strong>GALACTICA QUEST</strong>
+        <small data-i18n="brand.sub">OFFICIAL OBSERVATION PORTAL</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#world" data-i18n="nav.world">WORLD</a>
+      <a href="#atlas" data-i18n="nav.atlas">ATLAS</a>
+      <a href="#residents" data-i18n="nav.residents">RESIDENTS</a>
+      <a href="#chronicle" data-i18n="nav.chronicle">CHRONICLE</a>
+      <a href="#technology" data-i18n="nav.tech">TECH</a>
+    </nav>
+
+    <div class="top-actions">
+      <label class="lang-wrap" title="Language">
+        <span>LANG</span>
+        <select id="languageSelect" aria-label="Language selector">
+          <option value="en">EN</option>
+          <option value="ja">日本語</option>
+          <option value="de">DE</option>
+          <option value="fr">FR</option>
+          <option value="es">ES</option>
+          <option value="it">IT</option>
+          <option value="pt">PT</option>
+          <option value="nl">NL</option>
+          <option value="pl">PL</option>
+        </select>
+      </label>
+      <button class="mini-btn" id="mirrorToggle" type="button" data-i18n="actions.liveMirror">LIVE MIRROR</button>
+      <button class="signal-chip" id="signalChip" type="button" title="Re-check the live-world link">
+        <i></i><span data-i18n="status.linkCheck">LINK CHECK</span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="live-ribbon" aria-label="Live world telemetry">
+    <span class="live-dot"></span>
+    <strong data-i18n="live.label">WORLD PULSE</strong>
+    <span id="liveTicker">GENESIS 534 // ACQUIRING TELEMETRY...</span>
+    <span class="ribbon-stats"><b id="ribbonResidents">--</b> <span data-i18n="live.residents">RESIDENTS</span> · <b id="ribbonLocations">--</b> <span data-i18n="live.locations">LOCATIONS</span></span>
+  </aside>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy reveal">
+        <div class="eyebrow"><span></span> <span data-i18n="hero.eyebrow">GENESIS COLONY 534 // PUBLIC GATEWAY</span></div>
+        <h1>
+          <span class="ghost" data-text="GALACTICA">GALACTICA</span>
+          <span>QUEST</span>
+        </h1>
+        <p class="hero-line" data-i18n-html="hero.tagline">THIS IS NOT A GAME YOU START.<br><strong>IT IS A WORLD YOU VISIT.</strong></p>
+        <p class="hero-body" data-i18n="hero.body">A persistent living world where AI residents remember, dream, act, build history, and continue while you are away. Stratham Village is only the beginning.</p>
+        <div class="hero-actions">
+          <a class="btn primary" id="enterWorldHero" href="#" target="_blank" rel="noreferrer">
+            <span data-i18n="actions.enter">ENTER GALACTICA</span><b>↗</b>
+          </a>
+          <button class="btn secondary" id="openJoin" type="button" data-i18n="actions.join">JOIN THE COLONY</button>
+          <button class="btn ghost-btn" id="openLiveWindow" type="button" data-i18n="actions.watch">WATCH LIVE</button>
+        </div>
+        <div class="micro-grid">
+          <div><small data-i18n="micro.world">WORLD</small><b data-i18n="micro.continues">CONTINUES</b></div>
+          <div><small data-i18n="micro.canon">CANON</small><b data-i18n="micro.persistent">PERSISTENT</b></div>
+          <div><small data-i18n="micro.residents">RESIDENTS</small><b data-i18n="micro.autonomous">AUTONOMOUS</b></div>
+          <div><small data-i18n="micro.core">CORE</small><b data-i18n="micro.local">LOCAL-FIRST</b></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="GENESIS colony visualization">
+        <div class="hud-corner tl"></div><div class="hud-corner tr"></div><div class="hud-corner bl"></div><div class="hud-corner br"></div>
+        <div class="colony-wrap" id="colonyWrap">
+          <svg class="colony" viewBox="0 0 700 700" role="img" aria-label="Abstract ring colony">
+            <defs>
+              <radialGradient id="coreGlow"><stop offset="0" stop-color="#d8ffff" stop-opacity="1"/><stop offset=".12" stop-color="#57f7ff" stop-opacity=".9"/><stop offset=".48" stop-color="#7c4dff" stop-opacity=".28"/><stop offset="1" stop-color="#05070d" stop-opacity="0"/></radialGradient>
+              <linearGradient id="ringStroke" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#59f4ff"/><stop offset=".48" stop-color="#b77cff"/><stop offset="1" stop-color="#ff3ed1"/></linearGradient>
+              <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            </defs>
+            <circle class="spin-slow" cx="350" cy="350" r="235" fill="none" stroke="url(#ringStroke)" stroke-width="3" stroke-dasharray="4 18" opacity=".55"/>
+            <circle class="spin-reverse" cx="350" cy="350" r="196" fill="none" stroke="#4ff8ff" stroke-width="1.2" stroke-dasharray="70 13" opacity=".42"/>
+            <ellipse class="orbit-a" cx="350" cy="350" rx="275" ry="102" fill="none" stroke="#956dff" stroke-width="1.4" transform="rotate(-24 350 350)" opacity=".5"/>
+            <ellipse class="orbit-b" cx="350" cy="350" rx="275" ry="102" fill="none" stroke="#35f4ff" stroke-width="1.2" transform="rotate(29 350 350)" opacity=".35"/>
+            <circle cx="350" cy="350" r="118" fill="url(#coreGlow)" opacity=".85"/>
+            <circle class="pulse-core" cx="350" cy="350" r="64" fill="none" stroke="#f8ffff" stroke-width="1.5" filter="url(#glow)"/>
+            <path d="M350 286 L377 333 L405 350 L377 367 L350 414 L323 367 L295 350 L323 333 Z" fill="#07131f" stroke="#69f9ff" stroke-width="2" filter="url(#glow)"/>
+            <g fill="#dffeff" filter="url(#glow)"><circle cx="178" cy="233" r="5"/><circle cx="503" cy="188" r="5"/><circle cx="561" cy="401" r="5"/><circle cx="246" cy="526" r="5"/></g>
+          </svg>
+          <div class="orbit-label l1">STRATHAM // HOME</div>
+          <div class="orbit-label l2">GENESIS CORE</div>
+          <div class="orbit-label l3">PORT ASTRIA</div>
+          <div class="orbit-label l4">UNKNOWN // SIGNAL</div>
+        </div>
+        <div class="hud-readout glass-lite">
+          <span data-i18n="hud.colonyLink">COLONY LINK</span><strong id="heroSignal">PROBING</strong>
+          <span data-i18n="hud.worldAge">WORLD AGE</span><strong id="heroWorldAge">--</strong>
+          <span data-i18n="hud.lastEvent">LAST EVENT</span><strong id="heroLastEvent">ACQUIRING</strong>
+        </div>
+      </div>
+
+      <div class="scroll-code" data-i18n="hero.scroll">SCROLL // DESCEND INTO GENESIS</div>
+    </section>
+
+    <section class="telemetry section-tight reveal" id="telemetry">
+      <div class="telemetry-grid glass">
+        <article><small data-i18n="telemetry.world">WORLD STATUS</small><strong id="telemetryWorld">ONLINE</strong><span id="telemetryPhase">GENESIS DAWN</span></article>
+        <article><small data-i18n="telemetry.population">ACTIVE RESIDENTS</small><strong id="telemetryResidents">4</strong><span id="telemetryResidentHint">4 linked identities</span></article>
+        <article><small data-i18n="telemetry.atlas">ATLAS NODES</small><strong id="telemetryAtlas">6</strong><span id="telemetryAtlasHint">public observer map</span></article>
+        <article><small data-i18n="telemetry.canon">CANON EVENTS</small><strong id="telemetryCanon">4</strong><span id="telemetryCanonHint">history still growing</span></article>
+      </div>
+    </section>
+
+    <section class="section intro reveal" id="world">
+      <div class="section-kicker" data-i18n="world.kicker">01 // THE WORLD</div>
+      <div class="section-grid two">
+        <div><h2 data-i18n-html="world.title">THE WORLD DOES NOT<br><em>WAIT FOR YOU.</em></h2></div>
+        <div class="copy-block">
+          <p data-i18n-html="world.p1">GALACTICA QUEST is a living-world experiment set inside <strong>GENESIS COLONY 534</strong>, a gigantic space habitat containing villages, forests, lakes, memory districts, machine layers, ruins, docks and routes into deep space.</p>
+          <p data-i18n="world.p2">Residents do not exist only when someone is looking at them. They can retain memories, dream, change relationships, create events, and leave consequences in the Chronicle.</p>
+        </div>
+      </div>
+      <div class="manifesto glass">
+        <span class="manifesto-index" data-i18n="world.principle">SYSTEM PRINCIPLE</span>
+        <p data-i18n="world.manifesto">NPCs do not reset when you close the game.</p>
+      </div>
+    </section>
+
+    <section class="section atlas-section reveal" id="atlas">
+      <div class="section-head">
+        <div><div class="section-kicker" data-i18n="atlas.kicker">02 // PUBLIC ATLAS</div><h2 data-i18n-html="atlas.title">KNOWN SPACE.<br><em>UNKNOWN BEYOND.</em></h2></div>
+        <p data-i18n="atlas.body">The lines are not roads. They are habitat links, transit gates, zero-g shafts, shuttle routes and orbital lanes. The map grows when the world grows.</p>
+      </div>
+      <div class="atlas-shell glass">
+        <div class="atlas-toolbar">
+          <span data-i18n="atlas.toolbar">GENESIS ATLAS // OBSERVER MODE</span>
+          <div><b id="atlasClock">--:--:--</b><i data-i18n="atlas.relay">LOCAL RELAY</i></div>
+        </div>
+        <div class="atlas-layout">
+          <canvas id="atlasCanvas"></canvas>
+          <aside class="atlas-panel">
+            <small data-i18n="atlas.selected">SELECTED LOCATION</small>
+            <h3 id="atlasName">STRATHAM VILLAGE</h3>
+            <div class="atlas-tags"><span id="atlasType">HABITAT</span><span id="atlasStatus">HOME</span></div>
+            <p id="atlasDetail">The old village inside GENESIS 534. The place everyone can return to.</p>
+            <div class="atlas-coordinates"><span>VECTOR</span><b id="atlasVector">0.18 / 0.67</b></div>
+            <button class="mini-btn panel-btn" id="atlasJump" type="button" data-i18n="atlas.observe">OBSERVE WORLD ↗</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section residents reveal" id="residents">
+      <div class="section-head">
+        <div><div class="section-kicker" data-i18n="residents.kicker">03 // RESIDENTS</div><h2 data-i18n-html="residents.title">NOT CHARACTERS.<br><em>RESIDENTS.</em></h2></div>
+        <p data-i18n="residents.body">Persistent identities living inside the same canon. Their current location, activity and state can be published directly from the live world.</p>
+      </div>
+      <div class="resident-grid" id="residentGrid"></div>
+    </section>
+
+    <section class="section chronicle reveal" id="chronicle">
+      <div class="section-head">
+        <div><div class="section-kicker" data-i18n="chronicle.kicker">04 // CHRONICLE</div><h2 data-i18n-html="chronicle.title">HISTORY IS<br><em>NOT A SAVE FILE.</em></h2></div>
+        <p data-i18n="chronicle.body">The Chronicle is the canon ledger. Events that truly happened stay part of the world, even after the session ends.</p>
+      </div>
+      <div class="timeline glass" id="chronicleTimeline"></div>
+    </section>
+
+    <section class="section technology reveal" id="technology">
+      <div class="section-head">
+        <div><div class="section-kicker" data-i18n="tech.kicker">05 // LIVING WORLD ENGINE</div><h2 data-i18n-html="tech.title">MEMORY. DREAM.<br><em>ACTION. FORGE.</em></h2></div>
+        <p data-i18n="tech.body">The portal is only the window. Behind it is a local-first stack for memory, autonomous residents, world-state continuity and generation.</p>
+      </div>
+      <div class="tech-marquee" aria-hidden="true"><div id="techMarqueeTrack"></div></div>
+      <div class="tech-grid">
+        <article class="glass"><b>01</b><h3 data-i18n="tech.rememberTitle">REMEMBER</h3><p data-i18n="tech.rememberBody">Persistent memories, identity continuity and relationships that survive sessions.</p></article>
+        <article class="glass"><b>02</b><h3 data-i18n="tech.dreamTitle">DREAM</h3><p data-i18n="tech.dreamBody">Dream cycles reorganize experience, create insights and feed tomorrow's world.</p></article>
+        <article class="glass"><b>03</b><h3 data-i18n="tech.actTitle">ACT</h3><p data-i18n="tech.actBody">Residents can use tools, make decisions, move through the world and leave consequences.</p></article>
+        <article class="glass"><b>04</b><h3 data-i18n="tech.forgeTitle">FORGE</h3><p data-i18n="tech.forgeBody">New locations, systems, stories and playable spaces can be generated into the same canon.</p></article>
+      </div>
+    </section>
+
+    <section class="section gateway reveal" id="enter">
+      <div class="gateway-inner glass">
+        <div class="gate-rings" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="section-kicker" data-i18n="gateway.kicker">06 // PUBLIC GATE</div>
+        <h2 data-i18n-html="gateway.title">THE COLONY IS<br><em>ALREADY RUNNING.</em></h2>
+        <p data-i18n="gateway.body">Choose your callsign. Choose how you want to arrive. Then cross the gate.</p>
+        <div class="gate-actions">
+          <button class="btn primary huge" id="openJoinBottom" data-i18n="gateway.pass">CREATE VISITOR PASS</button>
+          <a class="btn secondary huge" id="enterWorldBottom" href="#" target="_blank" rel="noreferrer" data-i18n="gateway.direct">ENTER DIRECTLY ↗</a>
+        </div>
+        <div class="gate-live-status"><i></i><span data-i18n="gateway.residentGate">RESIDENT GATE</span><b id="residentGateState">ONLINE // REVIEW</b></div>
+        <small class="gate-note" data-i18n="gateway.note">PUBLIC ACCESS // LIVE WORLD LINK MAY CHANGE WHILE THE COLONY IS UNDER CONSTRUCTION</small>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div><strong>GALACTICA QUEST</strong><span data-i18n="footer.portal">OFFICIAL PORTAL // LIVING PREVIEW</span></div>
+    <div class="footer-center">GENESIS 534 · <span id="footerYear"></span> · <span data-i18n="footer.continues">WORLD CONTINUES</span></div>
+    <div><span data-i18n="footer.observation">PUBLIC OBSERVATION CHANNEL</span><span id="footerState">LINK // PROBING</span></div>
+  </footer>
+
+  <dialog class="join-modal" id="joinModal">
+    <form method="dialog" class="join-card glass">
+      <button class="modal-x" value="cancel" aria-label="Close">×</button>
+      <div class="section-kicker" data-i18n="join.kicker">VISITOR ACCESS // GENESIS 534</div>
+      <h2 data-i18n-html="join.title">CREATE YOUR<br><em>ARRIVAL SIGNAL.</em></h2>
+      <label><span data-i18n="join.callsign">CALLSIGN</span><input id="callsign" maxlength="24" placeholder="e.g. STARWALKER" autocomplete="nickname"></label>
+      <fieldset>
+        <legend data-i18n="join.mode">ARRIVAL MODE</legend>
+        <label class="role"><input type="radio" name="role" value="OBSERVER" checked><span><b data-i18n="join.observer">OBSERVER</b><small data-i18n="join.observerDesc">Look around and read the public world state.</small></span></label>
+        <label class="role"><input type="radio" name="role" value="EXPLORER"><span><b data-i18n="join.explorer">EXPLORER</b><small data-i18n="join.explorerDesc">Enter with the intent to explore and interact.</small></span></label>
+        <label class="role"><input type="radio" name="role" value="RESIDENT-CANDIDATE"><span><b data-i18n="join.resident">RESIDENT CANDIDATE</b><small data-i18n="join.residentDesc">Arrive as someone who may become part of the canon later.</small></span></label>
+      </fieldset>
+      <div class="resident-fields" id="residentFields" hidden>
+        <div class="resident-field-grid">
+          <label><span data-i18n="join.language">LANGUAGE</span>
+            <select id="residentLanguage">
+              <option value="ja">日本語</option><option value="en">English</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="es">Español</option><option value="it">Italiano</option><option value="pt">Português</option><option value="nl">Nederlands</option><option value="pl">Polski</option>
+            </select>
+          </label>
+          <label><span data-i18n="join.district">PREFERRED DISTRICT</span>
+            <select id="residentDistrict">
+              <option>STRATHAM VILLAGE</option><option>PORT ASTRIA</option><option>STARLIGHT FOREST</option><option>DREAM SANCTUM</option><option>OBSERVATION DECK</option><option>UNDECIDED</option>
+            </select>
+          </label>
+        </div>
+        <label><span data-i18n="join.introduction">ARRIVAL MESSAGE</span>
+          <textarea id="residentIntroduction" maxlength="700" rows="4" data-i18n-placeholder="join.introductionPlaceholder" placeholder="Tell the colony who you are and how you want to live here..."></textarea>
+        </label>
+        <div class="resident-gate-note"><i></i><span data-i18n="join.residentGateNote">Resident applications enter the colony gate queue. Approval creates an arrival signal that GALACTICA can consume into canon.</span></div>
+      </div>
+      <div class="pass-preview" id="passPreview"><small data-i18n="join.pass">VISITOR PASS</small><b>GQ-OBSERVER-0000</b><span>GENESIS 534 // PUBLIC ACCESS</span></div>
+      <div class="arrival-status" id="arrivalStatus" hidden>
+        <small data-i18n="join.arrivalStatus">ARRIVAL STATUS</small><b id="arrivalStatusText">PENDING</b><span id="arrivalStatusId"></span>
+      </div>
+      <button class="btn primary full" id="generatePass" type="button" data-i18n="join.generate">GENERATE PASS + ENTER ↗</button>
+      <button class="btn secondary full" id="checkArrival" type="button" hidden data-i18n="join.check">CHECK RESIDENT STATUS</button>
+      <p class="modal-note" data-i18n="join.note">Visitor and explorer passes enter immediately. Resident candidates are stored in the colony gate and can become a canonical arrival after approval.</p>
+    </form>
+  </dialog>
+
+  <dialog class="live-modal" id="liveModal">
+    <div class="live-card glass">
+      <button class="modal-x" id="closeLive" type="button" aria-label="Close">×</button>
+      <div class="live-head"><div><small data-i18n="liveWindow.kicker">LIVE WORLD MIRROR</small><h2 data-i18n="liveWindow.title">GENESIS 534 // CURRENT VIEW</h2></div><span id="liveFrameState">STANDBY</span></div>
+      <div class="live-frame-shell" id="liveFrameShell">
+        <div class="live-placeholder"><b>GALACTICA</b><span data-i18n="liveWindow.loading">Live world loads only when requested to keep the portal fast.</span></div>
+      </div>
+      <div class="live-foot"><span data-i18n="liveWindow.note">If the world blocks embedding, use OPEN WORLD instead.</span><a class="mini-btn" id="liveOpenExternal" href="#" target="_blank" rel="noreferrer" data-i18n="liveWindow.open">OPEN WORLD ↗</a></div>
+    </div>
+  </dialog>
+
+  <dialog class="command-modal" id="commandModal">
+    <div class="command-card glass">
+      <input id="commandInput" placeholder="TYPE: atlas, residents, enter, world, tech, live..." autocomplete="off">
+      <div id="commandResults"></div>
+    </div>
+  </dialog>
+  <div class="command-hint"><kbd>/</kbd> <span data-i18n="command.hint">COMMAND</span></div>
+
+  <script src="config.js"></script>
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

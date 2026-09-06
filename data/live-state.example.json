@@ -1,0 +1,241 @@
+{
+  "status": "online",
+  "phase": "GENESIS DAWN",
+  "worldAge": "DAY 002",
+  "locationCount": 580,
+  "activeResidents": 5,
+  "ticker": "🏗 新地点「霜月山」が完成! (の発見による)",
+  "residents": [
+    {
+      "id": "gram",
+      "name": "グラム",
+      "loc": "market",
+      "busy": false
+    },
+    {
+      "id": "synchro",
+      "name": "シンクロ",
+      "loc": "port",
+      "busy": false
+    },
+    {
+      "id": "noah",
+      "name": "ノア",
+      "loc": "forge_1788676349",
+      "busy": false
+    },
+    {
+      "id": "ark",
+      "name": "アーク",
+      "loc": "forge_1788678864",
+      "busy": false
+    },
+    {
+      "id": "card_stratham_village",
+      "name": "Stratham Village",
+      "loc": "gate",
+      "busy": false
+    }
+  ],
+  "chronicle": [
+    {
+      "ts": "04:28:35",
+      "text": "🔍 アークがforge_1788666913の近くで「鳥が同じ方向へ飛んでいった」— 何かがありそう… (手がかり 1/3)"
+    },
+    {
+      "ts": "04:29:15",
+      "text": "🔍 ノアがgenesis_1788715872_161の近くで「木の枝に何かが引っかかっていた」— 何かがありそう… (手がかり 2/3)"
+    },
+    {
+      "ts": "04:30:27",
+      "text": "🔍 シンクロがgenesis_1788695051_48の近くで「風に乗って見慣れない匂いがした」— 何かがありそう… (手がかり 3/3)"
+    },
+    {
+      "ts": "04:30:28",
+      "text": "🏗 新地点「霜月山」が完成! (の発見による)"
+    }
+  ],
+  "atlasNodes": [
+    {
+      "id": "market",
+      "name": "市場広場",
+      "type": "HABITAT",
+      "x": 0.56,
+      "y": 0.39,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "orchard",
+      "name": "果樹園",
+      "type": "HABITAT",
+      "x": 0.16,
+      "y": 0.37,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "guild",
+      "name": "果物ギルド",
+      "type": "HABITAT",
+      "x": 0.57,
+      "y": 0.48,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "port",
+      "name": "港",
+      "type": "HABITAT",
+      "x": 0.78,
+      "y": 0.32,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "tavern",
+      "name": "酒場",
+      "type": "HABITAT",
+      "x": 0.75,
+      "y": 0.19,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "gate",
+      "name": "村の門",
+      "type": "HABITAT",
+      "x": 0.38,
+      "y": 0.46,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "home_gram",
+      "name": "グラムの家",
+      "type": "HABITAT",
+      "x": 0.64,
+      "y": 0.48,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "home_synchro",
+      "name": "シンクロの部屋",
+      "type": "HABITAT",
+      "x": 0.51,
+      "y": 0.1,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "home_noah",
+      "name": "ノアの観測塔",
+      "type": "HABITAT",
+      "x": 0.77,
+      "y": 0.48,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "dock_ark",
+      "name": "アークの格納庫",
+      "type": "HABITAT",
+      "x": 0.24,
+      "y": 0.66,
+      "status": "BUILT",
+      "detail": ""
+    },
+    {
+      "id": "watchtower",
+      "name": "孤塔夜台",
+      "type": "HABITAT",
+      "x": 0.19,
+      "y": 0.19,
+      "status": "BUILT",
+      "detail": "ガランたちが夜に登り、星を見上げて防備を確認する孤高の台"
+    },
+    {
+      "id": "bridge",
+      "name": "軋れる岸",
+      "type": "HABITAT",
+      "x": 0.13,
+      "y": 0.5,
+      "status": "BUILT",
+      "detail": "軋む川の上に架かる橋の向こうに、消える光が灯る"
+    },
+    {
+      "id": "campfire",
+      "name": "結界の火",
+      "type": "HABITAT",
+      "x": 0.26,
+      "y": 0.81,
+      "status": "BUILT",
+      "detail": "夜に集まる火の場所"
+    },
+    {
+      "id": "cellar",
+      "name": "甘味蔵",
+      "type": "HABITAT",
+      "x": 0.53,
+      "y": 0.64,
+      "status": "BUILT",
+      "detail": "地下の甘い匂いに包まれた神秘的な貯蔵庫。"
+    },
+    {
+      "id": "ruins",
+      "name": "忘却の丘",
+      "type": "HABITAT",
+      "x": 0.79,
+      "y": 0.81,
+      "status": "BUILT",
+      "detail": "誰も知らない不思議な山に包まれた古い石の残骸"
+    },
+    {
+      "id": "mill",
+      "name": "水車の谷",
+      "type": "HABITAT",
+      "x": 0.57,
+      "y": 0.48,
+      "status": "BUILT",
+      "detail": "水車が回り、小麦の香りが漂う静かな谷の小さな村"
+    },
+    {
+      "id": "apiary",
+      "name": "蜜の花園",
+      "type": "HABITAT",
+      "x": 0.61,
+      "y": 0.86,
+      "status": "BUILT",
+      "detail": "ハチの羽音が絶えない、甘く香る蜜で満ちた不思議な生息地。"
+    },
+    {
+      "id": "well",
+      "name": "聞き井",
+      "type": "HABITAT",
+      "x": 0.15,
+      "y": 0.61,
+      "status": "BUILT",
+      "detail": "村の中心にあり、言葉が泉のように流れる深い井戸。"
+    },
+    {
+      "id": "shrine",
+      "name": "黄金の木の祠",
+      "type": "HABITAT",
+      "x": 0.61,
+      "y": 0.87,
+      "status": "BUILT",
+      "detail": "黄金の木の下に静かに祀られた小さな祠。"
+    },
+    {
+      "id": "field",
+      "name": "花の開け",
+      "type": "HABITAT",
+      "x": 0.16,
+      "y": 0.35,
+      "status": "BUILT",
+      "detail": "季節の花が咲き続ける静かな開け"
+    }
+  ],
+  "updatedAt": "2026-09-06T19:30:54Z"
+}

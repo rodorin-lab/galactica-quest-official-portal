@@ -1,0 +1,7 @@
+server.py
+resident_admin.py
+bridge/
+tools/
+data/
+__pycache__/
+*.pyc
