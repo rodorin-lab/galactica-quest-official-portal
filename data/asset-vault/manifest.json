@@ -1,0 +1,97 @@
+{
+  "schema": "galactica.asset.vault.v1",
+  "updated": "2026-09-07",
+  "policy": "GitHub上のMIT表示だけでは採用しない。README/LICENSE.mdの実文を検証してからVERIFIEDへ。",
+  "verified_mit": [
+    {
+      "id": "bricksvr",
+      "repo": "d12/bricksvr-game",
+      "stars": 59,
+      "license_evidence": "README: 'All assets (scripts, materials, 3D models) except name/logos are MIT, commercial use permitted'",
+      "dna": ["vr-build-sandbox", "grab-manipulation", "multiplayer-blocks", "materials"],
+      "galactica_use": "VR司令室の建築操作 (WORLD FORGE VR拡張の実装参照)",
+      "verified_by": "Gram via gh api 2026-09-07"
+    },
+    {
+      "id": "hakoniwa-ekiden2",
+      "repo": "shin-tomura/hakoniwa-ekiden2",
+      "stars": 0,
+      "license_evidence": "README: 'リポジトリ内の全データ(コード+3Dモデル+motion+audio)がMIT、商用可' 作者自作・外部素材ゼロ",
+      "dna": ["humanoid-model", "mmd-motion", "walk-run-idle-animations", "audio"],
+      "galactica_use": "AI住民の動きDNA (MMD motion → アバターアニメーション)",
+      "verified_by": "Gram via gh api 2026-09-07"
+    },
+    {
+      "id": "torque3d",
+      "repo": "GarageGames/Torque3D",
+      "stars": 3364,
+      "license_evidence": "LICENSE.md実在: MIT (GarageGames 2012-2016) + README: 'All assets and code are under MIT'",
+      "dna": ["engine-architecture", "terrain", "effects", "sample-assets", "world-building"],
+      "galactica_use": "エンジン設計の教科書 + terrain/effects DNA",
+      "verified_by": "Gram via gh api 2026-09-07"
+    },
+    {
+      "id": "spaceship-generator",
+      "repo": "a1studmuffin/SpaceshipGenerator",
+      "stars": 7819,
+      "license_evidence": "README: 'Released under the MIT License'",
+      "dna": ["seed-based-ship-gen", "hull-extrusion", "engines-antennas-turrets", "greebles", "lights"],
+      "galactica_use": "GALACTICA SHIP FORGE の祖先 (seed=Genome ID で艦を無限生成)",
+      "verified_by": "Gram via gh api 2026-09-07"
+    },
+    {
+      "id": "spaceship-generator-modern",
+      "repo": "ldo/blender_spaceship_generator",
+      "stars": null,
+      "license_evidence": "SpaceshipGenerator 継続開発版 (MIT継承)",
+      "dna": ["blender-3x-node-materials", "emissive-control"],
+      "galactica_use": "FORGE生成艦の Blender パイプライン現代化",
+      "verified_by": "Gram (ノア報告、要一次確認) 2026-09-07"
+    },
+    {
+      "id": "unity-spaceship-generator",
+      "repo": "mkmarek/unity-spaceship-generator",
+      "stars": null,
+      "license_evidence": "MIT port of SpaceshipGenerator",
+      "dna": ["parameterized-parts", "unity-runtime-gen"],
+      "galactica_use": "Unity runtime での艦生成 (将来の Native 版参照)",
+      "verified_by": "Gram (ノア報告、要一次確認) 2026-09-07"
+    },
+    {
+      "id": "ai-spaceship-generator",
+      "repo": "arayabrain/space-engineers-ai-spaceship-generator",
+      "stars": 24,
+      "license_evidence": "README: MIT badge + IEEE TG 2022 論文 (Gallotta/Arulkumaran/Soros)",
+      "dna": ["rule-based-gen", "evolutionary-algorithm", "functional-eval", "aesthetic-eval", "preference-learning", "quality-diversity"],
+      "galactica_use": "SHIP EVOLUTION LOOP の学術的祖先 — 戦闘ログ→弱点→Mk.II ループの実装参照",
+      "verified_by": "Gram via gh api 2026-09-07"
+    },
+    {
+      "id": "shipwright",
+      "repo": "stewsters/shipwright",
+      "stars": 59,
+      "license_evidence": "API: license MIT",
+      "dna": ["ship-interior-gen", "room-placement", "astar-corridors"],
+      "galactica_use": "艦内自動設計 DNA (Bridge/Crew/Engine/Hangar/Corridors → Recast NavMesh → AI住民が歩く艦)",
+      "verified_by": "Gram via gh api 2026-09-07"
+    }
+  ],
+  "audit_queue": [
+    {"id": "mecha-world", "repo": "YTyangtao666/mecha-world", "reason": "モデル個別由来がREADMEで断言されていない", "status": "AUDIT"},
+    {"id": "agilex-arm-urdf", "repo": "agilexrobotics/agx_arm_urdf", "reason": "実製品由来 — 機構DNAのみ、名称/ロゴ除去必須", "status": "AUDIT"},
+    {"id": "robotarm-v1", "repo": "RoboLabHub/RobotArm_v1.0", "reason": "Thingiverse 等外部参照あり — repo内STLの由来確認必要", "status": "AUDIT"},
+    {"id": "drone-3d-gesture", "repo": "keldevca/POC_drone-3d-gesture", "reason": "model 作者由来の明記が薄い", "status": "AUDIT"},
+    {"id": "bots-vs-aliens", "repo": "AdeelGameDev/Bots-vs-Aliens", "reason": "作者主張あり (original) — 追加確認後に昇格", "status": "AUDIT"}
+  ],
+  "rejected": [
+    {"id": "derelict", "repo": "RyanStonebraker/Derelict", "reason": "README: 高度な3Dモデル/SFXは作者所有 → 戦艦モデル吸収不可"},
+    {"id": "space-station-13-family", "reason": "code/assets が別ライセンスの例あり"}
+  ],
+  "robot_dna_map": {
+    "humanoid_skeleton": "ManiSkill-Stompy (haosulab) — URDF+meshes, READMEで元モデルMIT公開を明記",
+    "biped_legs": "Legolas (daviddoo02) — CAD/STL",
+    "arm_joints": "MOTUS (ELISAVADevelopmentLab) — 6DoF CAD/STL",
+    "hand_gripper": "Three-Fingered-Robotic-Gripper (RAMEL-ESPOL) + Grip4SO101 (XiujinLiu)",
+    "hexapod_locomotion": "hexapod_spiderbot_model (robs-tech-workbench) — STL一式"
+  }
+}
