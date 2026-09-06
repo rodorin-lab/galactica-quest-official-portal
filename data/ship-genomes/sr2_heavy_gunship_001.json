@@ -1,0 +1,110 @@
+{
+  "schema": "galactica.ship.genome.v1",
+  "asset_id": "sr2_heavy_gunship_001",
+  "source": {
+    "game": "Star Ruler 2",
+    "file": "data/designs/default/HeavyGunship.design",
+    "license_code": "MIT",
+    "license_assets": "CC-BY-NC 2.0",
+    "extracted_by": "Gram (Hermes) — design-file parsing + subsystem stat analysis",
+    "extraction_date": "2026-09-07"
+  },
+  "class": "heavy_gunship",
+  "hull_ref": "$1Large (Support)",
+  "build_size": 8,
+
+  "visual_dna": {
+    "silhouette": {
+      "profile": "elongated-hex-grid",
+      "symmetry": "bilateral",
+      "mass_distribution": "forward-heavy",
+      "center_of_mass_offset": 1.0,
+      "elongation": 0.58,
+      "grid": [19, 16]
+    },
+    "hull": {
+      "style": ["industrial", "functional", "hex-modular"],
+      "primary_shapes": ["hex-lattice", "forward-wedge", "engine-banks"],
+      "armor_layering": "light-scattered (16% coverage, forward edge reinforced)"
+    },
+    "weapons": [
+      {
+        "type": "Railgun",
+        "coverage_hex": 24,
+        "mount_positions": ["upper-forward", "lower-forward"],
+        "firing_arcs_deg": [-60.0, 50.0],
+        "scale": "large",
+        "note": "two heavy railgun batteries flanking the bow, converging forward fire"
+      },
+      {
+        "type": "SupportLaser",
+        "coverage_hex": 13,
+        "mount_position": "center-rear",
+        "beam_color": "#f9464d",
+        "scale": "medium",
+        "note": "close-defense beam battery amidships"
+      }
+    ],
+    "propulsion": {
+      "layout": "twin-rear-clusters (upper + lower mirrored)",
+      "coverage_hex": 18,
+      "visual_emphasis": 0.6,
+      "thrust_per_hex": 24,
+      "note": "rocket engine banks visible on both rear flanks — high thrust silhouette"
+    },
+    "color": {
+      "primary": ["steel-grey"],
+      "secondary": ["gunmetal"],
+      "emissive": ["#f9464d (laser beam)", "engine-exhaust-orange"]
+    },
+    "details": [
+      "hex-tile surface texture",
+      "exposed armor plates at bow tips",
+      "engine cluster nozzles",
+      "railgun barrel lines running along the flanks"
+    ]
+  },
+
+  "functional_dna": {
+    "role": "line-combat gunship — sustained fire, high mobility",
+    "subsystem_budget": {
+      "Railgun": {"hex": 24, "pct": 35, "damage_per_hex": 2.9, "range_per_hex": 330},
+      "SupportRocketEngine": {"hex": 18, "pct": 26, "thrust_per_hex": 24, "turn_per_hex": 1.5},
+      "SupportLaser": {"hex": 13, "pct": 19, "dps_per_hex": 1.85, "range_per_hex": 300},
+      "SupportPlateArmor": {"hex": 11, "pct": 16, "hp_per_hex": 60, "resistance": 0.5, "mass_per_hex": 2.5},
+      "CrewDeck": {"hex": 3, "pct": 4}
+    },
+    "combat_profile": {
+      "firepower": 0.88,
+      "mobility": 0.72,
+      "defense": 0.34,
+      "range": 0.55,
+      "supply_efficiency": 0.5
+    },
+    "doctrine": "aggressive brawler — trades armor for twin railgun batteries; wins by out-turning and out-shooting, not out-lasting"
+  },
+
+  "cultural_dna": {
+    "civilian_origin": "Blind Mind Studios / default human faction",
+    "design_philosophy": "pragmatic militarism — every hex earns its place, no decoration",
+    "aesthetic_bias": {"aggression": 0.82, "elegance": 0.31, "industrial": 0.91, "mysticism": 0.08, "advanced_tech": 0.55},
+    "era": "standard-era kinetic-beam hybrid"
+  },
+
+  "evolution_dna": {
+    "mutation_allowed": ["armor placement", "weapon mix (railgun↔laser↔missile)", "engine count", "hull size 4-16"],
+    "mutation_forbidden": ["bilateral symmetry", "forward-heavy mass bias", "core-forward crew placement"],
+    "known_weakness": "only 16% armor — railgun-era flanking fire will break the engine clusters early",
+    "evolution_hooks": {
+      "to_gram_resonance": "replace 1 railgun with ResonancePulse (shared-cooldown twin-link), add crystal-lattice armor",
+      "to_noah_oracle": "strip all railguns → sensor-arrays + beam only, triple engine for escape doctrine",
+      "to_rex_pioneer": "armor 16%→35%, keep 1 railgun, add exploration bay (converted crew deck)"
+    }
+  },
+
+  "lineage": {
+    "parent_id": null,
+    "children_ids": [],
+    "chronicle_ref": "GALACTICA-GENOME-001"
+  }
+}
