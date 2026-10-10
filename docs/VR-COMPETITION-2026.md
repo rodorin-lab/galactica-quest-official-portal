@@ -41,3 +41,8 @@ GALACTICA First Contact turns the existing living-world portal into a seated, ha
 
 ## 2:30 demo outline
 0:00–0:20 cold launch and hand-only entry; 0:20–1:10 three star activations; 1:10–1:50 resident beacon and real world update; 1:50–2:15 disconnect/recovery honesty; 2:15–2:30 hand-only exit. Use actual device footage and English captions. Do not claim AI dialogue before it is connected.
+
+## Published preview — 2026-10-10
+URL: https://galactica-portal-1rc820aq0-kenyuunakama-4315s-projects.vercel.app/xr/
+Vercel preview deployment in existing galactica-portal project. Original production aliases are unchanged. Anonymous page opens over HTTPS. Static XR assets are self-hosted; Python world APIs are absent on this standalone preview, so resident data and conversation are disconnected.
+Cloud browser has WebGL disabled: 3D interaction could not be verified. Fixed indefinite Checking WebXR status to show a WebGL initialization failure with Quest/desktop guidance. Quest hardware verification remains mandatory. No video or Devpost submission has occurred.
