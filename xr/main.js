@@ -1,6 +1,11 @@
 import * as THREE from './vendor/three.module.js';
 const status=document.querySelector('#status'), enter=document.querySelector('#enter');
-const renderer=new THREE.WebGLRenderer({antialias:true});
+let renderer;
+try { renderer=new THREE.WebGLRenderer({antialias:true}); } catch (error) {
+ enter.textContent='3D rendering unavailable';
+ status.textContent='This browser could not start WebGL. Open this page in Quest Browser, or enable hardware acceleration on your desktop. No VR session was started.';
+ throw error;
+}
 renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));renderer.setSize(innerWidth,innerHeight);renderer.xr.enabled=true;
 document.body.append(renderer.domElement);
 const scene=new THREE.Scene();scene.background=new THREE.Color(0x050b19);
